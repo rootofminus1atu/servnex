@@ -23,6 +23,10 @@ COPY Caddyfile /etc/caddy/Caddyfile
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+RUN echo "--- DEBUG ---" && ls -l / && cat /start.sh || true
+RUN echo "--- DEBUG start.sh ---" && ls -l /start.sh && file /start.sh && cat /start.sh || true
+
+
 EXPOSE 10000
 
 CMD ["/start.sh"]
