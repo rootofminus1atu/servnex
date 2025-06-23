@@ -1,9 +1,11 @@
 FROM caddy:2
 
-RUN apt-get update && apt-get install -y \
-    curl python3 python3-pip build-essential \
-    && curl https://sh.rustup.rs -sSf | bash -s -- -y \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    curl \
+    python3 \
+    py3-pip \
+    build-base \
+    && curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 
