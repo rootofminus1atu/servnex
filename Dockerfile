@@ -16,7 +16,7 @@ RUN cd rust_app && cargo build --release && cp target/release/rust_app /usr/loca
 
 WORKDIR /python_app
 COPY apps/python_app ./python_app
-RUN pip3 install -r python_app/requirements.txt
+RUN pip3 install --break-system-packages -r python_app/requirements.txt
 
 
 COPY Caddyfile /etc/caddy/Caddyfile
