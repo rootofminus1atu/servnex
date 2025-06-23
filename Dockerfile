@@ -29,4 +29,5 @@ RUN echo "--- DEBUG start.sh ---" && ls -l /start.sh && file /start.sh && cat /s
 
 EXPOSE 10000
 
-CMD ["/start.sh"]
+CMD ["sh", "/start.sh"]
+

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 /usr/local/bin/rust_app &
 
