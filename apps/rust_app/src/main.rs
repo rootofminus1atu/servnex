@@ -2,7 +2,7 @@ use std::net::TcpListener;
 use std::io::Write;
 
 fn main() {
-    let listener = TcpListener::bind("0.0.0.0:5000").unwrap();
+    let listener = TcpListener::bind("127.0.0.1:5000").unwrap();
     println!("rust app running on port 5000");
     for stream in listener.incoming() {
         let mut stream = stream.unwrap();

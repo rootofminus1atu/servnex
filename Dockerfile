@@ -1,3 +1,5 @@
+# TODO: test running caddy only for faster builds
+
 FROM caddy:2
 
 RUN apk add --no-cache libcap && setcap -r /usr/bin/caddy
