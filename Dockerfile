@@ -18,6 +18,7 @@ RUN cargo build --release && cp target/release/rust_app /usr/local/bin/
 
 WORKDIR /python_app
 COPY apps/python_app .
+RUN ls -l /python_app
 RUN pip3 install --break-system-packages -r requirements.txt
 
 
