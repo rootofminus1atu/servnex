@@ -19,7 +19,7 @@ COPY apps/rust_app ./rust_app
 RUN cd rust_app && cargo build --release && cp target/release/rust_app /usr/local/bin/
 
 WORKDIR /python_app
-COPY apps/python_app ./python_app
+COPY apps/python_app /python_app
 RUN pip3 install --break-system-packages -r python_app/requirements.txt
 
 
