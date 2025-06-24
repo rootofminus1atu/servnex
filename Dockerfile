@@ -1,5 +1,3 @@
-# TODO: test running caddy only for faster builds
-
 FROM caddy:2
 
 RUN apk add --no-cache libcap && setcap -r /usr/bin/caddy
@@ -15,12 +13,12 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 
 
 WORKDIR /build-rust
-COPY apps/rust_app ./rust_app
-RUN cd rust_app && cargo build --release && cp target/release/rust_app /usr/local/bin/
+COPY apps/rust_app .
+RUN cargo build --release && cp target/release/rust_app /usr/local/bin/
 
 WORKDIR /python_app
-COPY apps/python_app /python_app
-RUN pip3 install --break-system-packages -r python_app/requirements.txt
+COPY apps/python_app .
+RUN pip3 install --break-system-packages -r requirements.txt
 
 
 COPY Caddyfile /etc/caddy/Caddyfile
