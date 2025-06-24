@@ -1,5 +1,7 @@
 FROM caddy:2
 
+RUN apk add --no-cache libcap && setcap -r /usr/bin/caddy
+
 RUN apk add --no-cache \
     curl \
     python3 \
