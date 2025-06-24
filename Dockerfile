@@ -18,17 +18,15 @@ RUN cargo build --release && cp target/release/rust_app /usr/local/bin/
 
 WORKDIR /python_app
 COPY apps/python_app .
-RUN ls -l /python_app
 RUN pip3 install --break-system-packages -r requirements.txt
 
+
+RUN mkdir -p /srv/static
+COPY keepalive.html /srv/static/keepalive.html
 
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
-
-RUN echo "--- DEBUG ---" && ls -l / && cat /start.sh || true
-RUN echo "--- DEBUG start.sh ---" && ls -l /start.sh && file /start.sh && cat /start.sh || true
-
 
 EXPOSE 10000
 

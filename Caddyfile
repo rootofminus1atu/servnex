@@ -7,7 +7,17 @@
         reverse_proxy 127.0.0.1:8000
     }
 
+    handle_path /caddy/keepalive {
+        root * /srv/static
+        file_server
+        try_files {path} /keepalive.html
+    }
+
+    handle_path /caddy/health {
+        respond "OK" 200
+    }
+
     handle {
-        respond "Caddy is running but no route matched" 404
+        respond "404 not found" 404
     }
 }
